@@ -99,6 +99,7 @@ png_rtran_ok(png_structrp png_ptr, int need_IHDR)
 {
    if (png_ptr != NULL)
    {
+#ifndef PNG_INDEX_SUPPORTED
       if ((png_ptr->flags & PNG_FLAG_ROW_INIT) != 0)
          png_app_error(png_ptr,
             "invalid after png_start_read_image or png_read_update_info");
@@ -113,6 +114,9 @@ png_rtran_ok(png_structrp png_ptr, int need_IHDR)
 
          return 1; /* Ok */
       }
+#else
+      return 1;
+#endif
    }
 
    return 0; /* no png_error possible! */
@@ -159,7 +163,7 @@ png_set_background(png_structrp png_ptr,
    png_set_background_fixed(png_ptr, background_color, background_gamma_code,
       need_expand, png_fixed(png_ptr, background_gamma, "png_set_background"));
 }
-#  endif  /* FLOATING_POINT */
+#  endif /* FLOATING_POINT */
 #endif /* READ_BACKGROUND */
 
 /* Scale 16-bit depth files to 8-bit depth.  If both of these are set then the
@@ -1915,7 +1919,7 @@ png_init_read_transformations(png_structrp png_ptr)
             png_ptr->palette[i].blue = (png_byte)component;
          }
    }
-#endif  /* READ_SHIFT */
+#endif /* READ_SHIFT */
 }
 
 /* Modify the info structure to reflect the transformations.  The
