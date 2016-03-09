@@ -1,7 +1,7 @@
 
 /* pngpriv.h - private declarations for use inside libpng
  *
- * Last changed in libpng 1.6.21 [(PENDING RELEASE)]
+ * Last changed in libpng 1.6.22 [(PENDING RELEASE)]
  * Copyright (c) 1998-2002,2004,2006-2015 Glenn Randers-Pehrson
  * (Version 0.96 Copyright (c) 1996, 1997 Andreas Dilger)
  * (Version 0.88 Copyright (c) 1995, 1996 Guy Eric Schalnat, Group 42, Inc.)
@@ -1966,6 +1966,13 @@ PNG_INTERNAL_FUNCTION(void, png_init_filter_functions_neon,
    (png_structp png_ptr, unsigned int bpp), PNG_EMPTY);
 PNG_INTERNAL_FUNCTION(void, png_init_filter_functions_sse2,
    (png_structp png_ptr, unsigned int bpp), PNG_EMPTY);
+#endif
+
+#ifdef PNG_INDEX_SUPPORTED
+PNG_INTERNAL_FUNCTION(void, png_seek_data, (png_structp png_ptr,
+   png_uint_32 length), PNG_EMPTY);
+PNG_INTERNAL_FUNCTION(int, png_opt_crc_finish,(png_structrp png_ptr,
+   png_uint_32 skip), PNG_EMPTY);
 #endif
 
 PNG_INTERNAL_FUNCTION(png_uint_32, png_check_keyword, (png_structrp png_ptr,
