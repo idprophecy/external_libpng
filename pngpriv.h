@@ -1915,8 +1915,6 @@ PNG_INTERNAL_FUNCTION(void, PNG_FILTER_OPTIMIZATIONS, (png_structp png_ptr,
     */
 PNG_INTERNAL_FUNCTION(void, png_init_filter_functions_neon,
    (png_structp png_ptr, unsigned int bpp), PNG_EMPTY);
-PNG_INTERNAL_FUNCTION(void, png_init_filter_functions_sse2,
-   (png_structp png_ptr, unsigned int bpp), PNG_EMPTY);
 #endif
 
 #ifdef PNG_INDEX_SUPPORTED
