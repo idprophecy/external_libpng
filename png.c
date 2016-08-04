@@ -14,7 +14,7 @@
 #include "pngpriv.h"
 
 /* Generate a compiler error if there is an old png.h in the search path. */
-typedef png_libpng_version_1_6_24 Your_png_h_is_not_version_1_6_24;
+typedef png_libpng_version_1_6_25beta01 Your_png_h_is_not_version_1_6_25beta01;
 
 /* Tells libpng that we have already handled the first "num_bytes" bytes
  * of the PNG file signature.  If the PNG data is embedded into another
@@ -775,14 +775,14 @@ png_get_copyright(png_const_structrp png_ptr)
 #else
 #  ifdef __STDC__
    return PNG_STRING_NEWLINE \
-      "libpng version 1.6.24 - August 4, 2016" PNG_STRING_NEWLINE \
+      "libpng version 1.6.25beta01 - August 4, 2016" PNG_STRING_NEWLINE \
       "Copyright (c) 1998-2002,2004,2006-2016 Glenn Randers-Pehrson" \
       PNG_STRING_NEWLINE \
       "Copyright (c) 1996-1997 Andreas Dilger" PNG_STRING_NEWLINE \
       "Copyright (c) 1995-1996 Guy Eric Schalnat, Group 42, Inc." \
       PNG_STRING_NEWLINE;
 #  else
-   return "libpng version 1.6.24 - August 4, 2016\
+   return "libpng version 1.6.25beta01 - August 4, 2016\
       Copyright (c) 1998-2002,2004,2006-2016 Glenn Randers-Pehrson\
       Copyright (c) 1996-1997 Andreas Dilger\
       Copyright (c) 1995-1996 Guy Eric Schalnat, Group 42, Inc.";
@@ -1887,12 +1887,12 @@ png_colorspace_set_sRGB(png_const_structrp png_ptr, png_colorspacerp colorspace,
 
    /* If the standard sRGB cHRM chunk does not match the one from the PNG file
     * warn but overwrite the value with the correct one.
-    
+    */
    if ((colorspace->flags & PNG_COLORSPACE_HAVE_ENDPOINTS) != 0 &&
        !png_colorspace_endpoints_match(&sRGB_xy, &colorspace->end_points_xy,
        100))
       png_chunk_report(png_ptr, "cHRM chunk does not match sRGB",
-         PNG_CHUNK_ERROR); */
+         PNG_CHUNK_ERROR);
 
    /* This check is just done for the error reporting - the routine always
     * returns true when the 'from' argument corresponds to sRGB (2).
@@ -2318,6 +2318,7 @@ png_compare_ICC_profile_with_sRGB(png_const_structrp png_ptr,
                       * problems if they are used, therefore attempt to
                       * discourage their use, skip the 'have_md5' warning below,
                       * which is made irrelevant by this error.
+                      */
                      png_chunk_report(png_ptr, "known incorrect sRGB profile",
                          PNG_CHUNK_ERROR);
                   }
@@ -2341,10 +2342,11 @@ png_compare_ICC_profile_with_sRGB(png_const_structrp png_ptr,
          /* The signature matched, but the profile had been changed in some
           * way.  This probably indicates a data error or uninformed hacking.
           * Fall through to "no match".
+          */
          png_chunk_report(png_ptr,
              "Not recognizing known sRGB profile that has been edited",
              PNG_CHUNK_WARNING);
-         break; */
+         break;
 # endif
          }
       }
