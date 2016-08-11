@@ -25,7 +25,7 @@ Other information:
 
 Changes since the last public release (1.6.24):
 
-Version 1.6.25beta01 [August 10, 2016]
+Version 1.6.25beta01 [August 11, 2016]
   Reject oversized iCCP profile immediately.
   Clean up PNG_DEBUG compile of pngtest.c.
 
