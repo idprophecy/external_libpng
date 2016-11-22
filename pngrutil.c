@@ -452,7 +452,7 @@ png_inflate_claim(png_structrp png_ptr, png_uint_32 owner)
             png_ptr->flags |= PNG_FLAG_ZSTREAM_INITIALIZED;
       }
 
-#if ZLIB_VERNUM >= 0x1281
+#if ZLIB_VERNUM >= 0x1282
       /* Turn off validation of the ADLER32 checksum in IDAT chunks */
       if ((png_ptr->flags & PNG_FLAG_CRC_CRITICAL_IGNORE) != 0 &&
           png_ptr->zowner == png_IDAT)
