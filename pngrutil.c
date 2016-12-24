@@ -453,9 +453,9 @@ png_inflate_claim(png_structrp png_ptr, png_uint_32 owner)
       }
 
 #if ZLIB_VERNUM >= 0x1282
-      /* Turn off validation of the ADLER32 checksum in IDAT chunks */
-      if ((png_ptr->flags & PNG_FLAG_CRC_CRITICAL_IGNORE) != 0 &&
-          png_ptr->zowner == png_IDAT)
+   defined(PNG_SET_OPTION_SUPPORTED) && defined(PNG_IGNORE_ADLER32)
+      if (((png_ptr->options >> PNG_IGNORE_ADLER32) & 3) == PNG_OPTION_ON)
+         /* Turn off validation of the ADLER32 checksum in IDAT chunks */
          ret = inflateValidate(&png_ptr->zstream, 0);
 #endif
 
@@ -751,7 +751,7 @@ png_decompress_chunk(png_structrp png_ptr,
                    * the extra space may otherwise be used as a Trojan Horse.
                    */
                   if (ret == Z_STREAM_END &&
-                     chunklength - prefix_size != lzsize)
+                      chunklength - prefix_size != lzsize)
                      png_chunk_benign_error(png_ptr, "extra compressed data");
                }
 
@@ -861,7 +861,7 @@ png_inflate_read(png_structrp png_ptr, png_bytep read_buffer, uInt read_size,
       return Z_STREAM_ERROR;
    }
 }
-#endif
+#endif /* READ_iCCP */
 
 /* Read and check the IDHR chunk */
 
@@ -4155,7 +4155,9 @@ png_read_IDAT_data(png_structrp png_ptr, png_bytep output,
          png_zstream_error(png_ptr, ret);
 
          if (output != NULL)
-            png_chunk_error(png_ptr, png_ptr->zstream.msg);
+         {
+               png_chunk_error(png_ptr, png_ptr->zstream.msg);
+         }
 
          else /* checking */
          {
