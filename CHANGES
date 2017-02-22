@@ -5807,6 +5807,8 @@ Version 1.6.29beta02 [February 22, 2017]
   The contrib/examples/pngtopng.c recovery code was in the wrong if
     branches; the comments were correct.
 
+Version 1.6.29beta03 [February 22, 2017]
+
 Send comments/corrections/commendations to png-mng-implement at lists.sf.net
 (subscription required; visit
 https://lists.sourceforge.net/lists/listinfo/png-mng-implement
