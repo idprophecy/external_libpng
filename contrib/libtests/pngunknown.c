@@ -1,8 +1,8 @@
 
 /* pngunknown.c - test the read side unknown chunk handling
  *
- * Last changed in libpng 1.6.22 [May 26, 2016]
- * Copyright (c) 2015,2016 Glenn Randers-Pehrson
+ * Last changed in libpng 1.6.31 [July 27, 2017]
+ * Copyright (c) 2015,2017 Glenn Randers-Pehrson
  * Written by John Cunningham Bowler
  *
  * This code is released under the libpng license.
@@ -478,7 +478,7 @@ get_valid(display *d, png_infop info_ptr)
       png_textp text;
       png_uint_32 ntext = png_get_text(d->png_ptr, info_ptr, &text, NULL);
 
-      while (ntext-- > 0) switch (text[ntext].compression)
+      while (ntext > 0) switch (text[--ntext].compression)
       {
          case -1:
             flags |= PNG_INFO_tEXt;
@@ -614,7 +614,7 @@ get_unknown(display *d, png_infop info_ptr, int after_IDAT)
                   ++(d->error_count);
                   break;
                }
-               /* FALL THROUGH (safe) */
+               /* FALLTHROUGH */ /* (safe) */
             case PNG_HANDLE_CHUNK_ALWAYS:
                break;
          }
