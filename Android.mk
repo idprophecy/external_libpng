@@ -29,7 +29,8 @@ my_cflags_arm64 := -DPNG_ARM_NEON_OPT=2
 my_src_files_arm := \
 			arm/arm_init.c \
 			arm/filter_neon.S \
-			arm/filter_neon_intrinsics.c
+			arm/filter_neon_intrinsics.c \
+			arm/palette_neon_intrinsics.c
 
 
 common_CFLAGS := -std=gnu89 -Wno-unused-parameter #-fvisibility=hidden ## -fomit-frame-pointer
