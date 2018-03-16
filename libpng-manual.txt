@@ -1,6 +1,6 @@
 libpng-manual.txt - A description on how to use and modify libpng
 
- libpng version 1.6.34 - September 29, 2017
+ libpng version 1.6.35beta02 - March 6, 2018
  Updated and distributed by Glenn Randers-Pehrson
  <glennrp at users.sourceforge.net>
  Copyright (c) 1998-2017 Glenn Randers-Pehrson
@@ -11,7 +11,7 @@ libpng-manual.txt - A description on how to use and modify libpng
 
  Based on:
 
- libpng versions 0.97, January 1998, through 1.6.34 - September 29, 2017
+ libpng versions 0.97, January 1998, through 1.6.35beta02 - March 6, 2018
  Updated and distributed by Glenn Randers-Pehrson
  Copyright (c) 1998-2017 Glenn Randers-Pehrson
 
@@ -1003,7 +1003,7 @@ chunks to be assumed to be encoded using sRGB.
     png_set_alpha_mode(pp, PNG_ALPHA_PNG, PNG_GAMMA_MAC);
 
 In this case the output is assumed to be something like an sRGB conformant
-display preceeded by a power-law lookup table of power 1.45.  This is how
+display preceded by a power-law lookup table of power 1.45.  This is how
 early Mac systems behaved.
 
     png_set_alpha_mode(pp, PNG_ALPHA_STANDARD, PNG_GAMMA_LINEAR);
@@ -1055,7 +1055,7 @@ faster.)
 
 When the default gamma of PNG files doesn't match the output gamma.
 If you have PNG files with no gamma information png_set_alpha_mode allows
-you to provide a default gamma, but it also sets the ouput gamma to the
+you to provide a default gamma, but it also sets the output gamma to the
 matching value.  If you know your PNG files have a gamma that doesn't
 match the output you can take advantage of the fact that
 png_set_alpha_mode always sets the output gamma but only sets the PNG
@@ -3779,7 +3779,7 @@ in-memory bitmap formats or to be written from the same formats.  If these
 formats do not accommodate your needs then you can, and should, use the more
 sophisticated APIs above - these support a wide variety of in-memory formats
 and a wide variety of sophisticated transformations to those formats as well
-as a wide variety of APIs to manipulate ancilliary information.
+as a wide variety of APIs to manipulate ancillary information.
 
 To read a PNG file using the simplified API:
 
@@ -5266,7 +5266,7 @@ or as a "pull request" to
     https://github.com/glennrp/libpng/pulls
 
 We also accept patches built from the tar or zip distributions, and
-simple verbal discriptions of bug fixes, reported either to the
+simple verbal descriptions of bug fixes, reported either to the
 SourceForge bug tracker, to the png-mng-implement at lists.sf.net
 mailing list, as github issues, or directly to glennrp.
 
@@ -5414,7 +5414,7 @@ Since the PNG Development group is an ad-hoc body, we can't make
 an official declaration.
 
 This is your unofficial assurance that libpng from version 0.71 and
-upward through 1.6.34 are Y2K compliant.  It is my belief that earlier
+upward through 1.6.35beta02 are Y2K compliant.  It is my belief that earlier
 versions were also Y2K compliant.
 
 Libpng only has two year fields.  One is a 2-byte unsigned integer
